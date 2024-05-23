@@ -1,0 +1,11 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@model ASP_LR_6_Kyrylenko_402.User
+
+<form asp-action="Order" method="post">
+    <label>give us your name:</label>
+    <input type="text" asp-for="Name" /><br />
+    <label>how old are you:</label>
+    <input type="number" asp-for="Age" /><br />
+    <button type="submit">go to order</button>
+</form>

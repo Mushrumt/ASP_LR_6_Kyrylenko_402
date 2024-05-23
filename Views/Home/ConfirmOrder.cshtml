@@ -1,0 +1,16 @@
+﻿@model List<ASP_LR_6_Kyrylenko_402.Product>
+
+<h2>Final order:</h2>
+<table>
+    <tr>
+        <th>product</th>
+        <th>quantity</th>
+    </tr>
+    @foreach (var product in Model)
+    {
+        <tr>
+            <td>@product.Name</td>
+            <td>@product.Quantity</td>
+        </tr>
+    }
+</table>

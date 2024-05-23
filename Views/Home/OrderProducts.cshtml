@@ -1,0 +1,49 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "Order Products";
+}
+
+@model ASP_LR_6_Kyrylenko_402.User
+
+<h2>order your pizza, @Model.Name!</h2>
+<form asp-action="ConfirmOrder">
+    <label>how many products on pizza:</label>
+    <input type="number" id="productCount" name="productCount" min="1" required />
+    <br />
+
+    <div id="productFields"></div>
+
+    <button type="submit">order</button>
+</form>
+
+<script>
+    document.getElementById('productCount').addEventListener('input', function () {
+        var count = parseInt(this.value);
+        var fields = document.getElementById('productFields');
+        fields.innerHTML = '';
+
+        for (var i = 0; i < count; i++) {
+            var label = document.createElement('label');
+            label.textContent = 'product ' + (i + 1) + ':';
+            fields.appendChild(label);
+
+            var nameInput = document.createElement('input');
+            nameInput.setAttribute('type', 'text');
+            nameInput.setAttribute('name', 'products[' + i + '].Name');
+            fields.appendChild(nameInput);
+
+            var quantityLabel = document.createElement('label');
+            quantityLabel.textContent = 'quantity:';
+            fields.appendChild(quantityLabel);
+
+            var quantityInput = document.createElement('input');
+            quantityInput.setAttribute('type', 'number');
+            quantityInput.setAttribute('name', 'products[' + i + '].Quantity');
+            fields.appendChild(quantityInput);
+
+            var lineBreak = document.createElement('br');
+            fields.appendChild(lineBreak);
+        }
+    });
+</script>
